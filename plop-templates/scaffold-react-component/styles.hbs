@@ -1,0 +1,13 @@
+/**
+*  CSS Module for {{name}}
+**/
+@import '@sass/abstracts/imports';  // Necessary imports for all CSS Modules
+
+.{{kebabCase name}} {
+  position: relative;
+  
+  // media breakpoints should be nested inline for readability
+  @media screen and (min-width: 1024px) {
+      position: static;
+  }
+}

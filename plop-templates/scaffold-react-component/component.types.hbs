@@ -1,0 +1,19 @@
+import { Field, ImageField, Item, LinkField } from '@sitecore-jss/sitecore-jss-nextjs';
+import { ComponentProps } from 'lib/component-props';
+
+type SampleFields = {
+  SampleTitle: Field<string>;
+  SampleBody: Field<string>;
+  SampleLink: LinkField;
+  SampleLinkText: Field<string>;
+  SampleImage: ImageField;
+}
+
+type {{pascalCase name}}Fields = SampleFields & {
+  TitleHeadingLevel: Item | null;
+  TitleTextStyle: Item | null;
+};
+
+export type {{pascalCase name}}Props = ComponentProps & {
+  fields: {{pascalCase name}}Fields;
+};

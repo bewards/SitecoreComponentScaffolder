@@ -1,0 +1,25 @@
+{
+  "name": "sitecore-component-scaffolder",
+  "description": "A scaffolding template built with Plop.js to quickly spin up a Sitecore Component based on scaffolding questions",
+  "version": "0.0.1",
+  "private": false,
+  "author": {
+    "name": "Sitecore Corporation",
+    "url": "https://jss.sitecore.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sitecore/jss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sitecore/jss/issues"
+  },
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "plop": "^4.0.1"
+  },
+  "scripts": {
+    "plop": "plop"
+  }
+}

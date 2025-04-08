@@ -1,0 +1,94 @@
+import {
+  Image,
+  RichText,
+  Text,
+  getFieldValue,
+  {{#if hasDatasource}}
+  withDatasourceCheck,
+  {{/if}}
+} from '@sitecore-jss/sitecore-jss-nextjs';
+import classNames from 'classnames/bind';
+import React from 'react';
+
+import Link from 'components/ui/Link/Link';
+import ResponsiveImages from 'components/ui/ResponsiveImages/ResponsiveImages';
+{{#if hasStyles}}
+{{#if hasDatasource}}
+import compose from 'lib/enhancers/compose';
+{{/if}}
+import withStyles from 'lib/enhancers/withStyles';
+{{/if}}
+{{#if hasRenderingParams}}
+import { getRenderingParam } from 'lib/rendering-params';
+{{/if}}
+import type { RecordOfFields } from 'models/fields';
+import { {{pascalCase name}}Props } from './{{pascalCase name}}.types';
+
+// CSS module styles
+import styles from './{{pascalCase name}}.module.scss';
+
+const cx = classNames.bind(styles);
+
+const {{pascalCase name}} = (props: {{pascalCase name}}Props): JSX.Element => {
+  const { fields{{#if hasRenderingParams}}, params{{/if}} } = props;
+
+  {{#if hasRenderingParams}}
+  // Rendering Params
+  const imageDirection = getRenderingParam(params?.ImageDirection);
+  {{/if}}
+  const titleHeadingLevelItemField = fields.TitleHeadingLevel?.fields as RecordOfFields;
+  const titleHeadingLevelValue = getFieldValue<string>(titleHeadingLevelItemField, 'Value') || 'h1';
+
+  const titleTextStyleItemField = fields.TitleTextStyle?.fields as RecordOfFields;
+  const titleTextStyleValue = getFieldValue<string>(titleTextStyleItemField, 'Value') || 'coconut';
+
+  return (
+    <div className={cx('{{kebabCase name}}', 'component', props.stylesSXA)}>
+      <TextDS display={'heading'} as="h2" tone={'head'} size={'md'}>
+        Component Generated! Name: {{pascalCase name}}
+      </TextDS>
+      {{#if hasRenderingParams}}
+      <p className="mb-4">
+        Accessing Rendering Parameter <code>imageDirection</code>:{' '}
+        {JSON.stringify(params?.imageDirection)} -&gt; {imageDirection}
+      </p>
+      {{/if}}
+      <div className="flex">
+        <Image field={fields.SampleImage} className={'w-50'} />
+      </div>
+      <div>
+        <Text
+            className={cx({ title: true, [titleTextStyleValue]: true })}
+            encode={typeof fields.SampleTitle.editable !== 'undefined'}
+            field={fields.SampleTitle}
+            tag={titleHeadingLevelValue}
+            editable={true}
+        />
+        <RichText className={cx('body')} field={fields.SampleBody} tag="div" />
+        {fields.SampleLink?.value.href !== '' && (
+          <Link
+            className={cx('link')}
+            field={fields.SampleLink}
+            showLinkTextWithChildrenPresent={false}
+          >
+            <Text field={fields.SampleLinkText} />
+          </Link>
+        )}
+      </div>
+    </div>
+  );
+};
+
+{{#if hasDatasource}}
+{{#if hasStyles}}
+export default compose<{{pascalCase name}}Props>(withDatasourceCheck(), withStyles())({{pascalCase name}});
+{{else}}
+export default withDatasourceCheck()<{{pascalCase name}}Props>({{pascalCase name}});
+{{/if}}
+{{else}}
+{{#if hasStyles}}
+export default withStyles()<{{pascalCase name}}Props>({{pascalCase name}});
+{{else}}
+export default {{pascalCase name}};
+{{/if}}
+{{/if}}
