@@ -10,4 +10,8 @@ A scaffolding tool is a beneficial way of kickstarting the creation of a Feature
 
 
 ## Scaffold a React Component with Project standard customizations
+- Run `npm install`
 - Run `npm run plop scaffold-react-component`
+
+https://github.com/user-attachments/assets/862674f7-866c-4f2a-9a1b-04e38222f22a
+
