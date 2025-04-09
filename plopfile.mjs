@@ -69,7 +69,7 @@ export default function (plop) {
       if (baseFeaturePath === null) {
         // new feature - build path
         var featureName = data.featureName.length ? pascalCaseHelper(data.featureName) : componentName;
-        baseFeaturePath = `src/components/${featureName}`;
+        baseFeaturePath = `components/${featureName}`;
         // if the optional feature name was provided and is different than the component name, create another folder structure /FeatureName/ComponentName/ComponentName.tsx
         if (featureName.length && featureName !== componentName) {
           baseFeaturePath = `${baseFeaturePath}/${componentName}`;
@@ -140,7 +140,7 @@ function readFilesSync(dir, onlyFolders) {
  * @returns [] array of name value options where value is an absolute path to the Feature
  */
 const GetFeatures = () => {
-  let fileData = readFilesSync("src/components/", true);
+  let fileData = readFilesSync("components/", true);
   const fileDataRecords = fileData.map((fObj) => {
     return { name: fObj.name, value: fObj.filepath };
   });

@@ -1,5 +1,6 @@
 import {
   Image,
+  Link,
   RichText,
   Text,
   getFieldValue,
@@ -10,8 +11,6 @@ import {
 import classNames from 'classnames/bind';
 import React from 'react';
 
-import Link from 'components/ui/Link/Link';
-import ResponsiveImages from 'components/ui/ResponsiveImages/ResponsiveImages';
 {{#if hasStyles}}
 {{#if hasDatasource}}
 import compose from 'lib/enhancers/compose';
@@ -44,9 +43,7 @@ const {{pascalCase name}} = (props: {{pascalCase name}}Props): JSX.Element => {
 
   return (
     <div className={cx('{{kebabCase name}}', 'component', props.stylesSXA)}>
-      <TextDS display={'heading'} as="h2" tone={'head'} size={'md'}>
-        Component Generated! Name: {{pascalCase name}}
-      </TextDS>
+      <h1>Component Generated! Name: {{pascalCase name}}</h1>
       {{#if hasRenderingParams}}
       <p className="mb-4">
         Accessing Rendering Parameter <code>imageDirection</code>:{' '}

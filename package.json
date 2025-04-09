@@ -15,8 +15,13 @@
     "url": "https://github.com/sitecore/jss/issues"
   },
   "license": "Apache-2.0",
-  "dependencies": {},
+  "dependencies": {
+    "@sitecore-jss/sitecore-jss-nextjs": "^22.5.4",
+    "classnames": "^2.5.1",
+    "react": "^18.2.0"
+  },
   "devDependencies": {
+    "@types/react": "^18.2.0",
     "plop": "^4.0.1"
   },
   "scripts": {
